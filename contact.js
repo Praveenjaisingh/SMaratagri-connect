@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     
         alert('Message sent successfully (simulated).');
-        window.location.href = 'thankyou.html'; 
+        window.location.href = 'Thankyou.html'; 
       });
     }
   });
