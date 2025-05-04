@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logged Out - Smart Agri-Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #a8e063, #56ab2f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .logout-box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .logout-box h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .logout-box p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .logout-box a {
+      text-decoration: none;
+      background: #ffffff;
+      color: #56ab2f;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .logout-box a:hover {
+      background: #e6e6e6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logout-box">
+    <h1>You've been logged out</h1>
+    <p>Thank you for using Smart Agri-Connect. We hope to see you again soon!</p>
+    <a href="index.html">Log in again</a>
+  </div>
+  <script>
+    let seconds = 10;
+    const message = document.createElement('p');
+    message.innerHTML = `Redirecting to login page in <strong>${seconds}</strong> seconds...`;
+    document.querySelector('.logout-box').appendChild(message);
+  
+    const interval = setInterval(() => {
+      seconds--;
+      message.innerHTML = `Redirecting to login page in <strong>${seconds}</strong> seconds...`;
+      
+      if (seconds === 0) {
+        clearInterval(interval);
+        window.location.href = "index.html";
+      }
+    }, 1000);
+  </script>
+  
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment - Smart Agri-Connect</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Smart Agri-Connect</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="features.html">Features</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="index.html" class="logout-btn">Logout</a>
+  </header>
+
+  <main>
+    <section class="payment-section">
+      <h2>💳 Complete Your Payment</h2>
+      <form class="payment-form" action="process_payment.php" method="POST">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required />
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="amount">Amount (₹):</label>
+        <input type="number" id="amount" name="amount" min="1" required />
+
+
+        <label for="cardnumber">Card Number:</label>
+        <input type="text" id="cardnumber" name="cardnumber" maxlength="16" required />
+
+        <label for="expdate">Expiration Date:</label>
+        <input type="month" id="expdate" name="expdate" required />
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" maxlength="4" required />
+
+        <button type="submit" class="btn">Pay Now</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Smart Agri-Connect. All rights reserved.</p>
+  </footer>
+
+  <script>
+   
+   
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.payment-form');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      const cardnumber = document.getElementById('cardnumber').value.trim();
+      const expdate = document.getElementById('expdate').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+
+      if (!fullname || !email || !cardnumber || !expdate || !cvv) {
+        alert('Please fill all fields before submitting.');
+        return;
+      }
+      if (!amount || isNaN(amount) || Number(amount) <= 0) {
+         alert('Please enter a valid amount.');
+         return;
+      }
+
+      if (cardnumber.length !== 16 || !/^\d+$/.test(cardnumber)) {
+        alert('Card number must be exactly 16 digits.');
+        return;
+      }
+
+      if (cvv.length !== 3 || !/^\d+$/.test(cvv)) {
+        alert('CVV must be exactly 3 digits.');
+        return;
+      }
+
+      alert('Payment processed successfully!');
+      window.location.href = 'paymentthankyou.html';
+    });
+  });
+</script>
+
+  
+  
+
+</body>
+</html>
